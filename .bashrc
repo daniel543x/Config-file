@@ -21,8 +21,21 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# function git branch
+git-branch()
+{
+	git_branch()
+	{
+		git branch --show-current 2> /dev/null
+	}
+	git branch &> /dev/null
+	if [ $? -eq 0 ]; then
+		echo -ne "$(tput bold)\033[38;5;11m[$(tput sgr0)\033[38;5;147m$(git_branch)$(tput bold)\033[38;5;11m]-"
+	fi
+}
+
 # My custom prompt
-export PS1="\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]@\[$(tput sgr0)\]\[\033[38;5;10m\]\H\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]-[\[$(tput sgr0)\]\[\033[38;5;208m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]\[$(tput sgr0)\]\[\033[38;5;216m\]:\[$(tput sgr0)\]\[\033[38;5;11m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="$(tput bold)\033[38;5;11m┌─\$(git-branch)\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]@\[$(tput sgr0)\]\[\033[38;5;10m\]\H\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]-[\[$(tput sgr0)\]\[\033[38;5;208m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]\[$(tput sgr0)\]\n$(tput bold)\033[38;5;11m└────$(tput bold)[$(tput sgr0)\]\[\033[38;5;160m\\]\\$\[$(tput sgr0)\]$(tput bold)\[\033[38;5;11m]$(tput sgr0): \[$(tput sgr0)\]"
 export PS2="\[$(tput bold)\]\[\033[38;5;11m\]->\[$(tput sgr0)\]"
 export PS4="\[$(tput bold)\][\[$(tput sgr0)\]\[\033[38;5;208m\]::\[$(tput sgr0)\]\[$(tput bold)\]]\[$(tput sgr0)\]\[\033[38;5;208m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
