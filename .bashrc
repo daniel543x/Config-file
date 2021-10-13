@@ -1,3 +1,8 @@
+# Including setings file
+if [ -f $HOME/.bash/aliases ]; then
+	source $HOME/.bash/aliases
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -21,7 +26,21 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# function git branch
+# Function coloring man
+man()
+{
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}
+
+# Function git branch
 git-branch()
 {
 	git_branch()
@@ -49,9 +68,17 @@ alias egrep='egrep --color=auto'
 alias ip="ip -c"
      
 # Usefull aliases
-alias mkdir='mkdir -p -v'
-alias rm='rm -f -r -v'
-alias cp='cp -r -v'
+alias bashrc='vim $HOME/.bashrc'
+alias mkdir='mkdir -p -v'	# Beter create dir
+alias rm='rm -f -r -v'		# Beter remove
+alias cp='cp -r -v'		# Beter coping
+alias gs='git status'		# View Git status.
+alias ga='git add'		# Add a file to Git.
+alias gaa='git add --all'	# Add all files to Git.
+alias gc='git commit'		# Commit changes to the code.
+alias gl='git log --oneline'	# View the Git log.
+alias gb='git checkout -b'	# Create a new Git branch and move to the new branch at the same time. 
+alias gd='git diff'		# View the difference.
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -59,12 +86,6 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Bash alias definitions.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
