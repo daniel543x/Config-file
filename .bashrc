@@ -35,7 +35,7 @@ git-branch()
 }
 
 # My custom prompt
-export PS1="$(tput bold)\033[38;5;11m┌─\$(git-branch)\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]@\[$(tput sgr0)\]\[\033[38;5;10m\]\H\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]-[\[$(tput sgr0)\]\[\033[38;5;208m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]\[$(tput sgr0)\]\n$(tput bold)\033[38;5;11m└────$(tput bold)[$(tput sgr0)\]\[\033[38;5;160m\\]\\$\[$(tput sgr0)\]$(tput bold)\[\033[38;5;11m]$(tput sgr0): \[$(tput sgr0)\]"
+export PS1="$(tput bold)\033[38;5;11m┌─\$(git-branch)\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]@\[$(tput sgr0)\]\[\033[38;5;10m\]\H\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]-[\[$(tput sgr0)\]\[\033[38;5;208m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]\[$(tput sgr0)\]\n\[$(tput bold)\]\[\033[38;5;11m\]└────\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\\$\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]:\[$(tput sgr0)\] \[$(tput sgr0)\]"
 export PS2="\[$(tput bold)\]\[\033[38;5;11m\]->\[$(tput sgr0)\]"
 export PS4="\[$(tput bold)\][\[$(tput sgr0)\]\[\033[38;5;208m\]::\[$(tput sgr0)\]\[$(tput bold)\]]\[$(tput sgr0)\]\[\033[38;5;208m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
