@@ -40,6 +40,18 @@ man()
         man "$@"
 }
 
+# Python virtualenv
+prompt-venv()
+{
+	if test -z "$VIRTUAL_ENV"; then
+		echo -n ""
+	else
+		echo -en "$(tput bold)\033[38;5;11m[$(tput sgr0)\033[38;5;135m`basename \"$VIRTUAL_ENV\"`$(tput bold)\033[38;5;11m]"
+	fi
+}
+# Disable defoult prompt change by venv
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 # Function git branch
 git-branch()
 {
@@ -54,7 +66,7 @@ git-branch()
 }
 
 # My custom prompt
-export PS1="$(tput bold)\033[38;5;11m┌─\$(git-branch)\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]@\[$(tput sgr0)\]\[\033[38;5;10m\]\H\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]-[\[$(tput sgr0)\]\[\033[38;5;208m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]\[$(tput sgr0)\]\n\[$(tput bold)\]\[\033[38;5;11m\]└────\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\\$\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]:\[$(tput sgr0)\] \[$(tput sgr0)\]"
+export PS1="$(tput bold)\033[38;5;11m┌─\$(git-branch)\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]@\[$(tput sgr0)\]\[\033[38;5;10m\]\H\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]-[\[$(tput sgr0)\]\[\033[38;5;208m\]\w\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]\[$(tput sgr0)\]\n\[$(tput bold)\]\[\033[38;5;11m\]└────\$(prompt-venv)─\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\][\[$(tput sgr0)\]\[\033[38;5;9m\]\\$\[$(tput sgr0)\]\[$(tput bold)\]\[\033[38;5;11m\]]:\[$(tput sgr0)\] \[$(tput sgr0)\]"
 export PS2="\[$(tput bold)\]\[\033[38;5;11m\]->\[$(tput sgr0)\]"
 export PS4="\[$(tput bold)\][\[$(tput sgr0)\]\[\033[38;5;208m\]::\[$(tput sgr0)\]\[$(tput bold)\]]\[$(tput sgr0)\]\[\033[38;5;208m\]>\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
@@ -79,6 +91,7 @@ alias gc='git commit'		# Commit changes to the code.
 alias gl='git log --oneline'	# View the Git log.
 alias gb='git checkout -b'	# Create a new Git branch and move to the new branch at the same time. 
 alias gd='git diff'		# View the difference.
+alias wget='wget2'
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
