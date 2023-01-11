@@ -1,0 +1,38 @@
+# Function for coloring man
+man()
+{
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}
+
+# Python virtualenv
+prompt-venv()
+{
+	if test -z "$VIRTUAL_ENV"; then
+		echo -n ""
+	else
+		echo -en "$(tput bold)\033[38;5;11m[$(tput sgr0)\033[38;5;135m`basename \"$VIRTUAL_ENV\"`$(tput bold)\033[38;5;11m]"
+	fi
+}
+
+# Function git branch
+git-branch()
+{
+	git_branch()
+	{
+		git branch --show-current 2> /dev/null
+	}
+	git branch &> /dev/null
+	if [ $? -eq 0 ]; then
+		echo -ne "$(tput bold)\033[38;5;11m[$(tput sgr0)\033[38;5;147m$(git_branch)$(tput bold)\033[38;5;11m]-"
+	fi
+}
+
+
