@@ -1,3 +1,40 @@
+" <----- Vim-plug config ----->
+call plug#begin()
+
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command.
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" NERD Commenter
+Plug 'preservim/nerdcommenter'
+
+" Check syntax in Vim asynchronously and fix files
+Plug 'w0rp/ale'
+
+" Syntax checking hacks for vim
+Plug 'scrooloose/syntastic'
+
+" Surround for vim.
+Plug 'tpope/vim-surround'
+
+" Botton bar for vim.
+Plug 'vim-airline/vim-airline'
+
+" Displays tags in a window, ordered by scope.
+Plug 'majutsushi/tagbar'
+
+" Auto complite for vim.
+Plug 'valloric/youcompleteme'
+
+" 
+Plug 'https://github.com/itchyny/lightline.vim.git'
+
+" Colored rainbows for vim.
+Plug 'https://github.com/krischik/vim-rainbow.git'
+
+call plug#end()
+
+" <----- Vim config ----->
+
 if has('filetype')
   filetype indent plugin on
 endif
