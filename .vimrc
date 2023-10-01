@@ -22,9 +22,6 @@ Plug 'vim-airline/vim-airline'
 " Displays tags in a window, ordered by scope.
 Plug 'majutsushi/tagbar'
 
-" Auto complite for vim.
-Plug 'valloric/youcompleteme'
-
 " 
 Plug 'https://github.com/itchyny/lightline.vim.git'
 
